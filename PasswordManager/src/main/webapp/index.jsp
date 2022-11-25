@@ -9,20 +9,10 @@
 </head>
 <body>
 <div>
-		<h2>Password Management</h2>
-		
-		<form:form action="verifyuser">
-			<form:radiobutton path="user" value="user"/>
-			<form:radiobutton path="admin" value="admin"/>
-			
-			<form:label path="email"></form:label>
-			<form:input path="email"/>
-			
-			<form:label path="password"></form:label>
-			<form:password path="password"/>
-		</form:form>
-		
-</div>
 
+		<h2>Password Management</h2>
+		<h1>Does Not have an account</h1>
+		<a href="signup">SignUp</a>
+</div>
 </body>
 </html>
