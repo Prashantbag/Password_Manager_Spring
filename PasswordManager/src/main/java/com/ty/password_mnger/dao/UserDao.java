@@ -7,6 +7,7 @@ import javax.persistence.EntityTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ty.password_mnger.dto.User;
 import com.ty.password_mnger.dto.UserSocial;
 
 @Repository
@@ -25,5 +26,18 @@ public class UserDao {
 		
 		return userSocial;
 		
+	}
+
+
+	public User saveUser(User user)
+	{
+		EntityManager entityManager =entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		
+		entityTransaction.begin();
+		entityManager.persist(user);
+		entityTransaction.commit();
+		
+		return user;
 	}
 }

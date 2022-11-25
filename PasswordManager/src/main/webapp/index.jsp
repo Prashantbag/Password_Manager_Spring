@@ -7,7 +7,12 @@
 <title>Password Management</title>
 </head>
 <body>
-<a href="addusercredentials">Add credentials</a>
 
+<div>
+
+		<h2>Password Management</h2>
+		<h1>Does Not have an account</h1>
+		<a href="signup">SignUp</a>
+</div>
 </body>
 </html>
