@@ -7,15 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ty.password_mnger.dao.UserDao;
 import com.ty.password_mnger.dto.User;
+import com.ty.password_mnger.dto.UserSocial;
 
 @org.springframework.stereotype.Service
 
-public class Service {
+public class UserService {
 	@Autowired
 	UserDao dao;
 
 	public User saveUser(User user) {
 		return dao.saveUser(user);
+	}
+	public void saveUserSocial(UserSocial userSocial) {
+		dao.saveUserSocial(userSocial);
+		
 	}
 
 	public User getUserByEmail(User user) {

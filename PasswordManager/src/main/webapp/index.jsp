@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<a href="addusercredentials">Add credentials</a>
+
 <div>
 
 <a href="login">login</a>

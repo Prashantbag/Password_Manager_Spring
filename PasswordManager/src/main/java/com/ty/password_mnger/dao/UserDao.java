@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ty.password_mnger.dto.User;
+import com.ty.password_mnger.dto.UserSocial;
 
 @Repository
 public class UserDao {
@@ -29,7 +30,8 @@ public class UserDao {
 
 	public User getUserbyEmail(String email) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		Query query = entityManager.createQuery("select u from User u where u.email=?1", User.class);
+		System.out.println(email);
+		Query query = entityManager.createQuery("Select u from User u where u.email=?1", User.class);
 		return (User) query.setParameter(1, email).getSingleResult();
 
 	}
@@ -52,5 +54,20 @@ public class UserDao {
 		Query query = entityManager.createQuery("Select u from User u");
 		List<User> users = query.getResultList();
 		return users;
+	}
+
+
+	
+
+	public UserSocial saveUserSocial(UserSocial userSocial) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		
+		entityTransaction.begin();
+		entityManager.persist(userSocial);
+		entityTransaction.commit();
+		
+		return userSocial;
+		
 	}
 }

@@ -2,12 +2,12 @@ package com.ty.password_mnger.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import com.ty.password_mnger.dto.UserSocial;
+import com.ty.password_mnger.service.UserService;
 
 import com.ty.password_mnger.dto.User;
 
@@ -15,9 +15,9 @@ import com.ty.password_mnger.dto.User;
 @Controller
 public class ConfigController 
 {
-	Service service;
-	
 	@Autowired
+	UserService userService;
+	
 	@RequestMapping("signup")
 	public ModelAndView signUp()
 	{
@@ -30,13 +30,31 @@ public class ConfigController
 	public ModelAndView saveUser(@ModelAttribute User user)
 	{
 		ModelAndView modelAndView=new ModelAndView();
-		service.saveUser(user);
+		userService.saveUser(user);
 		modelAndView.setViewName("login.jsp");
 		return modelAndView;
 	}	
 
 
+	@RequestMapping("addusercredentials")
+	public ModelAndView getuserCredential(UserSocial usersocial) {
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("usersocial",new UserSocial());
+			modelAndView.setViewName("addusercredentials.jsp");
+			
+			return modelAndView;
+	}
 	
+	
+	@RequestMapping("saveusersocial")
+	public ModelAndView savesocial(@ModelAttribute UserSocial usersocial) {
+		ModelAndView modelAndView = new ModelAndView();
+		userService.saveUserSocial(usersocial);
+		modelAndView.setViewName("index.jsp");
+		modelAndView.addObject("usersocial",new UserSocial());
+		
+		return modelAndView;
+	}
 	
 
 	@RequestMapping("login")
@@ -52,9 +70,10 @@ public class ConfigController
 	public ModelAndView loginUser(@ModelAttribute User user) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("user", new User());
-		System.out.println(user.getEmail());
-		System.out.println(user.getPassword());
-		User user1 = service.getUserByEmail(user);
+		
+		User user1 = userService.getUserByEmail(user);
+		System.out.println(user1.getEmail());
+		System.out.println(user1.getPassword());
 		if (user1 != null) {
 			modelAndView.setViewName("view.jsp");
 		} else {
