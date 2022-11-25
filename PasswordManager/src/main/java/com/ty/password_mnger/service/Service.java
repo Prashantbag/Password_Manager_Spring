@@ -1,7 +1,6 @@
 package com.ty.password_mnger.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ty.password_mnger.dao.UserDao;
 import com.ty.password_mnger.dto.User;
@@ -20,4 +19,8 @@ public class Service {
 		dao.update(user);
 	}
 	
+	public User servicefindstubyid(int id) {
+		User user =dao.findbyid(id);
+		return user;
+	}
 }

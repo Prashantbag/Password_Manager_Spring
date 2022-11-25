@@ -38,4 +38,11 @@ public class UserDao {
 		return user;
 	}
 
+	
+	public User findbyid(int id) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		User user = entityManager.find(User.class, id);
+		return user;
+	}
+
 }

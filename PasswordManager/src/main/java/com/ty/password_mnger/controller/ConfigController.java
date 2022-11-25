@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ty.dto.Student;
 import com.ty.password_mnger.dto.User;
 
 @Repository
@@ -40,6 +42,12 @@ public class ConfigController {
 		dispatcher.forward(req, res);
 	}
 	
-	
+	@RequestMapping("social")
+	public ModelAndView editstudent(@RequestParam int id) {
+		User user = service.servicefindstubyid(id);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
 	
 }
