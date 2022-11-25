@@ -1,7 +1,13 @@
 package com.ty.password_mnger.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class User {
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	private String name;
 	private String Address;
@@ -44,6 +50,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", Address=" + Address + ", phone=" + phone + ", email=" + email
+				+ ", password=" + password + "]";
+	}
+	
 	
 	
 }
