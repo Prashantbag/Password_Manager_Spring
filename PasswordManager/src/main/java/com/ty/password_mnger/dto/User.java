@@ -7,15 +7,15 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id ;
 	private String name;
-	private String Address;
+	private String address;
 	private long phone;
 	private String email;
 	private String password;
+	
 	public int getId() {
 		return id;
 	}
@@ -29,10 +29,10 @@ public class User {
 		this.name = name;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public long getPhone() {
 		return phone;
@@ -51,7 +51,8 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+
 	}
-	
+
 	
 }

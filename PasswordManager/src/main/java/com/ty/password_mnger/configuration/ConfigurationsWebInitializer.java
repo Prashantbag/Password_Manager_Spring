@@ -2,7 +2,7 @@ package com.ty.password_mnger.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ConfigurationWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class ConfigurationsWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -17,6 +17,5 @@ public class ConfigurationWebInitializer extends AbstractAnnotationConfigDispatc
 	@Override
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
-	}
-
+	}	
 }

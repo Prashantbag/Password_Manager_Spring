@@ -9,14 +9,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+
+
 @Configuration
 @ComponentScan(basePackages = "com.ty.password_mnger")
 @EnableWebMvc
 public class Config {
 
-	@Bean("emf")
+	@Bean(name="emf")
 	@Scope("prototype")
-	public EntityManagerFactory getEntityManagerFactory() {
+	public EntityManagerFactory getEMF() {
 		return Persistence.createEntityManagerFactory("spring");
 	}
+	
+	
 }
