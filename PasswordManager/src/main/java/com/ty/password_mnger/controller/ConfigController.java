@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,12 +25,12 @@ public class ConfigController {
 	
 	
 
-	@RequestMapping("delete/{id}")
-	public void deletesuser(@RequestParam int id) {
-		userService.servicedelete(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("RUKMESH");//add
-		dispatcher.forward(request, response);
-	}
+//	@RequestMapping("delete/{id}")
+//	public void deletesuser(@RequestParam int id) {
+//		userService.servicedelete(id);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("RUKMESH");//add
+//		dispatcher.forward(request, response);
+//	}
 
 	@RequestMapping("updateuser")
 	public void updateuser(@ModelAttribute User user, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

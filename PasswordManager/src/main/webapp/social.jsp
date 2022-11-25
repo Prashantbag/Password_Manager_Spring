@@ -43,7 +43,7 @@
 		<form:input path="gmailPassword" readonly="true" />
 		<br>
 
-		<td><a href="delete"path="id">Delete</a>
+		<td><a href="delete?id" >Delete</a>
 		<td><a href="edit">Edit</a>
 	</form:form>
 </body>
