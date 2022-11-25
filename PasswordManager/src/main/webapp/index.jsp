@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,10 @@
 <title>Password Management</title>
 </head>
 <body>
+
 <div>
+
+<a href="login">login</a>
 
 		<h2>Password Management</h2>
 		<h1>Does Not have an account</h1>
