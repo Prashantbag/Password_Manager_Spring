@@ -1,6 +1,7 @@
 package com.ty.password_mnger.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,20 +32,20 @@ public class ConfigController {
 	
 	
 
-	@RequestMapping("delete/{id}")
-	public void deletesuser(@RequestParam int id) {
-		userService.servicedelete(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("RUKMESH");//add
-		dispatcher.forward(request, response);
-	}
+//	@RequestMapping("delete/{id}")
+//	public void deletesuser(@RequestParam int id) {
+//		userService.servicedelete(id);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("RUKMESH");//add
+//		dispatcher.forward(request, response);
+//	}
 
-	@RequestMapping("updateuser")
-	public void updateuser(@ModelAttribute User user, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		ModelAndView modelAndView = new ModelAndView();
-		userService.serviceupdate(user);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("RUKMESH");//add
-		dispatcher.forward(req, res);
-	}
+//	@RequestMapping("updateuser")
+//	public void updateuser(@ModelAttribute User user, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+//		ModelAndView modelAndView = new ModelAndView();
+//		userService.serviceupdate(user);
+//		RequestDispatcher dispatcher = req.getRequestDispatcher("RUKMESH");//add
+//		dispatcher.forward(req, res);
+//	}
 	
 	@RequestMapping("social")
 	public ModelAndView editstudent(@RequestParam int id) {
@@ -140,5 +141,40 @@ public class ConfigController {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("login");
 			dispatcher.forward(req, res);		}
 		
+	}
+	
+	@RequestMapping("adminlogin")
+	public ModelAndView adminLogin()
+	{
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.addObject("admin", new User());
+		modelAndView.setViewName("adminlogin.jsp");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping("checkadmin")
+	public ModelAndView checkAdmin(@ModelAttribute User admin)
+	{
+		ModelAndView modelAndView=new ModelAndView();
+		String adminEmail="admin@gmail.com";
+		String adminPassword="admin@123";
+		if(admin.getEmail().equals(adminEmail) && admin.getPassword().equals(adminPassword))
+		{
+			List<User> users=userService.getAllUser();
+			for (User user : users)
+			{
+				System.out.println(user.getId());
+				System.out.println(user.getName());
+				System.out.println(user.getUsersocial().getFacebookPassword());
+			}
+			modelAndView.addObject("users", users);
+			modelAndView.setViewName("viewadmin.jsp");
+		}
+		else
+		{
+			modelAndView.setViewName("index.jsp");
+		}
+		return modelAndView;
 	}
 }
