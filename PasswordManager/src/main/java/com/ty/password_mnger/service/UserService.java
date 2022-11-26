@@ -40,7 +40,7 @@ public class UserService {
 		dao.delete(id);
 	}
 	
-	public void  serviceupdate(User user) {
+	public void serviceupdate(User user) {
 		dao.update(user);
 	}
 	
