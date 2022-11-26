@@ -102,5 +102,16 @@ public class UserDao {
 		List<User> users = query.getResultList();
 		return users;
 	}
+	
+	public void updateUserSocialDetail(User user) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		
+		entityTransaction.begin();
+		entityManager.merge(user);
+		entityTransaction.commit();
+		
+		
+	}
 
 }

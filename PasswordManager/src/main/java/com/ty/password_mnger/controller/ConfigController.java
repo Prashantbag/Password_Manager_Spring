@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,9 +86,14 @@ public class ConfigController {
 	
 	
 	@RequestMapping("saveusersocial")
-	public ModelAndView savesocial(@ModelAttribute UserSocial usersocial) {
+	public ModelAndView savesocial(@ModelAttribute UserSocial usersocial,HttpServletRequest req,HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		
 		ModelAndView modelAndView = new ModelAndView();
 		userService.saveUserSocial(usersocial);
+		User user =(User)session.getAttribute("loggeduser");
+		user.setUsersocial(usersocial);
+		userService.updateUserSocialDetail(user);
 		modelAndView.setViewName("social.jsp");
 		modelAndView.addObject("usersocial",new UserSocial());
 		
@@ -123,9 +129,11 @@ public class ConfigController {
 	
 	@RequestMapping("loginuser")
 	public void loginUser(User user , HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException {
+		HttpSession session = req.getSession();
 		
 		User loggeduser=userService.getUserByEmail(user);
 		if (loggeduser != null) {
+			session.setAttribute("loggeduser", loggeduser);
 			RequestDispatcher dispatcher = req.getRequestDispatcher("addusercredentials");
 			dispatcher.forward(req, res);
 		} else {

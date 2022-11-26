@@ -48,4 +48,9 @@ public class UserService {
 		User user =dao.findbyid(id);
 		return user;
 	}
+	
+	public void updateUserSocialDetail(User user) {
+		dao.updateUserSocialDetail(user);
+		
+	}
 }
