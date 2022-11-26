@@ -59,12 +59,12 @@ public class UserDao {
 		}
 	}
 	
-	public User update(User user) {
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-		entityManager.remove(user);
-	}
+//	public User update(User user) {
+//		EntityManager entityManager = entityManagerFactory.createEntityManager();
+//		EntityTransaction entityTransaction = entityManager.getTransaction();
+//		entityTransaction.begin();
+//		entityManager.remove(user);
+//	}
 
 
 	

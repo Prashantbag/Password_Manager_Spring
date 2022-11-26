@@ -8,15 +8,13 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 <div>
-=======
+
 <a href="addusercredentials">Add credentials</a>
 
-<div>
+
 
 <a href="login">login</a>
->>>>>>> edeac9724e07a653d0cfc8a7bffbe6cfc103287f
 
 		<h2>Password Management</h2>
 		<h1>Does Not have an account</h1>

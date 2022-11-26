@@ -1,9 +1,11 @@
 package com.ty.password_mnger.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -16,6 +18,16 @@ public class User {
 	private String email;
 	private String password;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private UserSocial usersocial;
+	
+	
+	public UserSocial getUsersocial() {
+		return usersocial;
+	}
+	public void setUsersocial(UserSocial usersocial) {
+		this.usersocial = usersocial;
+	}
 	public int getId() {
 		return id;
 	}

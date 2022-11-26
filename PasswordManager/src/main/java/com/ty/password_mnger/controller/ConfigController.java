@@ -75,7 +75,7 @@ public class ConfigController {
 	}	
 	
 	@RequestMapping("addusercredentials")
-	public ModelAndView getuserCredential(UserSocial usersocial) {
+	public ModelAndView getuserCredential(UserSocial usersocial,User user) {
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("usersocial",new UserSocial());
 			modelAndView.setViewName("addusercredentials.jsp");
@@ -88,7 +88,7 @@ public class ConfigController {
 	public ModelAndView savesocial(@ModelAttribute UserSocial usersocial) {
 		ModelAndView modelAndView = new ModelAndView();
 		userService.saveUserSocial(usersocial);
-		modelAndView.setViewName("index.jsp");
+		modelAndView.setViewName("social.jsp");
 		modelAndView.addObject("usersocial",new UserSocial());
 		
 		return modelAndView;
@@ -104,20 +104,33 @@ public class ConfigController {
 		return modelAndView;
 	}
 
-	@RequestMapping("loginuser")
-	public ModelAndView loginUser(@ModelAttribute User user) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("user", new User());
-		
-		User user1 = userService.getUserByEmail(user);
-		System.out.println(user1.getEmail());
-		System.out.println(user1.getPassword());
-		if (user1 != null) {
-			modelAndView.setViewName("view.jsp");
-		} else {
-			modelAndView.setViewName("login.jsp");
-		}
-		return modelAndView;
-	}
+//	@RequestMapping("loginuser")
+//	public ModelAndView loginUser(@ModelAttribute User user) {
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("user", new User());
+//		
+//		User user1 = userService.getUserByEmail(user);
+//		System.out.println(user1.getEmail());
+//		System.out.println(user1.getPassword());
+//		if (user1 != null) {
+//			modelAndView.setViewName("view.jsp");
+//		} else {
+//			modelAndView.setViewName("login.jsp");
+//		}
+//		return modelAndView;
+//	}
 
+	
+	@RequestMapping("loginuser")
+	public void loginUser(User user , HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException {
+		
+		User loggeduser=userService.getUserByEmail(user);
+		if (loggeduser != null) {
+			RequestDispatcher dispatcher = req.getRequestDispatcher("addusercredentials");
+			dispatcher.forward(req, res);
+		} else {
+			RequestDispatcher dispatcher = req.getRequestDispatcher("login");
+			dispatcher.forward(req, res);		}
+		
+	}
 }

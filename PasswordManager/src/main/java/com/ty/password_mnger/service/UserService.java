@@ -25,7 +25,7 @@ public class UserService {
 
 	public User getUserByEmail(User user) {
 		User recuser = dao.getUserbyEmail(user.getEmail());
-		if (user.getPassword().equals(recuser.getPassword())) {
+		if (recuser.getPassword().equals(user.getPassword())) {
 			return recuser;
 		} else {
 			return null;

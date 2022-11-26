@@ -10,7 +10,7 @@
 <title>Social View Page</title>
 </head>
 <body>
-	<form:form modelAttribute="user">
+	<form:form action="login" modelAttribute="user">
 
 		<form:label path="id">User ID</form:label>
 		<form:input path="id" readonly="true" />
