@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>All Users</title>
+<title>All Users view page</title>
 </head>
 <body>
 <table border="2px">
@@ -38,6 +38,6 @@
 <br>
 <br>
 
-<h2>to go back click here<a href="index.jsp">Exit</a></h2>
+<h4>to go back click here<a href="index.jsp">Exit</a></h4>
 </body>
 </html>

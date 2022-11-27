@@ -12,7 +12,7 @@
 
 	<h3>Add Your Credentials</h3>
 	
-	<form:form action="saveusersocial" modelAttribute="usersocial">
+	<form:form action="user-profile-view" modelAttribute="usersocial">
 			<h4>Facebook</h4>
 		
 	

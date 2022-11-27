@@ -64,7 +64,7 @@ public class ConfigController {
 		return modelAndView;
 	}
 
-	@RequestMapping("saveuser")
+	@RequestMapping("userlogin")
 	public ModelAndView saveUser(@ModelAttribute User user) {
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println(user.getEmail());
@@ -83,7 +83,7 @@ public class ConfigController {
 		return modelAndView;
 	}
 
-	@RequestMapping("saveusersocial")
+	@RequestMapping("user-profile-view")
 	public ModelAndView savesocial(@ModelAttribute UserSocial usersocial, HttpServletRequest req,
 			HttpServletResponse res) {
 		HttpSession session = req.getSession();
@@ -108,7 +108,7 @@ public class ConfigController {
 		return modelAndView;
 	}
 
-	@RequestMapping("loginuser")
+	@RequestMapping("add-credentials")
 	public void loginUser(User user, HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		HttpSession session = req.getSession();
