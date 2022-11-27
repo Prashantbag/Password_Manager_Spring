@@ -40,9 +40,9 @@ public class UserService {
 		dao.delete(id);
 	}
 	
-//	public void  serviceupdate(User user) {
-//		dao.update(user);
-//	}
+	public void serviceupdate(User user) {
+		dao.update(user);
+	}
 	
 	public User servicefindstubyid(int id) {
 		User user =dao.findbyid(id);

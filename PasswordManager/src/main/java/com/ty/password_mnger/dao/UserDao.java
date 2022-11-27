@@ -15,36 +15,34 @@ import com.ty.password_mnger.dto.UserSocial;
 
 @Repository
 public class UserDao {
-	
+
 	@Autowired
 	EntityManagerFactory entityManagerFactory;
 
 	public UserSocial saveUserSocial(UserSocial userSocial) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
-		
+
 		entityTransaction.begin();
 		entityManager.persist(userSocial);
 		entityTransaction.commit();
-		
+
 		return userSocial;
-		
+
 	}
 
+	public User saveUser(User user) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
 
-	public User saveUser(User user)
-	{
-		EntityManager entityManager =entityManagerFactory.createEntityManager();
-		EntityTransaction entityTransaction=entityManager.getTransaction();
-		
 		entityTransaction.begin();
 		entityManager.persist(user);
 		entityTransaction.commit();
-		
+
 		return user;
 	}
-	
-	public void delete (int id) {
+
+	public void delete(int id) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		User user = entityManager.find(User.class, id);
@@ -58,22 +56,21 @@ public class UserDao {
 			System.out.println("User not found");
 		}
 	}
-	
-//	public User update(User user) {
-//		EntityManager entityManager = entityManagerFactory.createEntityManager();
-//		EntityTransaction entityTransaction = entityManager.getTransaction();
-//		entityTransaction.begin();
-//		entityManager.remove(user);
-//	}
 
+	public User update(User user) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.merge(user);
+		entityTransaction.commit();
+		return user;
+	}
 
-	
 	public User findbyid(int id) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		User user = entityManager.find(User.class, id);
 		return user;
 	}
-
 
 	public User getUserbyEmail(String email) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -102,16 +99,15 @@ public class UserDao {
 		List<User> users = query.getResultList();
 		return users;
 	}
-	
+
 	public void updateUserSocialDetail(User user) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
-		
+
 		entityTransaction.begin();
 		entityManager.merge(user);
 		entityTransaction.commit();
-		
-		
+
 	}
 
 }
