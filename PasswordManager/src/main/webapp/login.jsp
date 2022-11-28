@@ -60,7 +60,7 @@
 									<form:label path="email" class="label">Enter Email:</form:label>
 								</td>
 								<td>	
-									<form:input path="email" class="inputheight"/>
+									<form:input path="email" class="inputheight" required="required"/>
 								</td>	
 							</tr>
 							<tr class="tr">
@@ -68,7 +68,7 @@
 									<form:label  path="password" class="label">Enter Password:</form:label>
 								</td>
 								<td>	
-									<form:input path="password" class="inputheight"/>
+									<form:input path="password" class="inputheight" required="required"/>
 								</td>	
 							</tr>
 							

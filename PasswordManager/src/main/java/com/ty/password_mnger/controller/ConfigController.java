@@ -118,7 +118,7 @@ public class ConfigController {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("addusercredentials");
 			dispatcher.forward(req, res);
 		} else {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("login");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/login");
 			dispatcher.forward(req, res);
 		}
 
